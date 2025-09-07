@@ -134,14 +134,22 @@ const Hero = () => {
         </div>
 
         {/* RIGHT CONTENT */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className=""
-        >
-          <img src={heroVideo} alt="" className="lg:w-[500px] 3xl:w-[746px]" />
+
+        <motion.div className="">
+          {/* Animate only the hero image */}
+          <motion.img
+            src={heroVideo}
+            alt=""
+            className="lg:w-[500px] 3xl:w-[746px]"
+            // initial={{ opacity: 0, scale: 0.8 }}
+            // whileInView={{ opacity: 1, scale: 1 }}
+            // transition={{
+            //   duration: 1.2,
+            //   ease: "easeOut",
+            // }}
+            // viewport={{ once: true }}
+          />
+
           <a
             href="https://calendly.com/contact-weskaleagency/30min?"
             target="_blank"

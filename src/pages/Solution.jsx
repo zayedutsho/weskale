@@ -103,7 +103,7 @@ const Solution = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 1.2, ease: "easeOut" },
+      transition: { duration: 0.5, ease: "easeOut" },
     },
   };
   const containerVariants = {
@@ -116,10 +116,10 @@ const Solution = () => {
   };
 
   // individual card pop-up animation
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-  };
+  // const cardVariants = {
+  //   hidden: { opacity: 0, y: 30 },
+  //   show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  // };
 
   return (
     <div>
@@ -127,13 +127,12 @@ const Solution = () => {
         <motion.h1
           className="hidden lg:block mt-[60px] lg:mt-[80px] 3xl:mt-[120px] lg:mb-[60px] 3xl:mb-[90px] text-center text-[32px] lg:text-[50px] 3xl:text-[56px] text-white font-grotesk"
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          animate="visible" // 👈 animate immediately
           variants={headingVariants}
         >
-          Launch, Manage &&nbsp;
+          Launch, Manage &nbsp;
           <span className="font-playfair italic text-[#1F48FF] text-[34px] lg:text-[52px] 3xl:text-[60px]">
-            Grow Your <br />
+            Grow Your <br />
             Business&nbsp;
           </span>
           &nbsp;Online
@@ -142,21 +141,19 @@ const Solution = () => {
         <motion.h1
           className="leading-[45px] lg:hidden mt-[60px] lg:mt-[80px] 3xl:mt-[120px] lg:mb-[60px] 3xl:mb-[90px] text-center text-[24px] lg:text-[50px] 3xl:text-[56px] text-white font-grotesk"
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          animate="visible" // 👈 animate immediately
           variants={headingVariants}
         >
-          Launch, Manage &&nbsp;
+          Launch, Manage &nbsp;
           <span className="font-playfair italic text-[#1F48FF] text-[24px] lg:text-[52px] 3xl:text-[60px]">
-            Grow Your Business&nbsp;
+            Grow Your Business&nbsp;
           </span>
           &nbsp;Online
         </motion.h1>
         <motion.div
           className="mt-[40px] lg:mt-0 grid grid-cols-1 md:grid-cols-3 gap-6 lg:max-w-[1100px] 3xl:max-w-[1300px] mx-auto"
           initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
+          animate={{ opacity: 1, scale: 1 }} // 👈 animate immediately
           transition={{ duration: 1.2, ease: "easeOut" }}
         >
           {solutions.map((solution, idx) => (
