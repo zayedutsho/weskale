@@ -140,14 +140,14 @@ const Solution = () => {
         </motion.h1>
 
         <motion.h1
-          className="leading-[45px] lg:hidden mt-[60px] lg:mt-[80px] 3xl:mt-[120px] lg:mb-[60px] 3xl:mb-[90px] text-center text-[32px] lg:text-[50px] 3xl:text-[56px] text-white font-grotesk"
+          className="leading-[45px] lg:hidden mt-[60px] lg:mt-[80px] 3xl:mt-[120px] lg:mb-[60px] 3xl:mb-[90px] text-center text-[24px] lg:text-[50px] 3xl:text-[56px] text-white font-grotesk"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={headingVariants}
         >
           Launch, Manage &&nbsp;
-          <span className="font-playfair italic text-[#1F48FF] text-[34px] lg:text-[52px] 3xl:text-[60px]">
+          <span className="font-playfair italic text-[#1F48FF] text-[24px] lg:text-[52px] 3xl:text-[60px]">
             Grow Your Business&nbsp;
           </span>
           &nbsp;Online

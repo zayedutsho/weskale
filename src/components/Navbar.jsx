@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import logo from "../assets/logos/logo.svg";
-import { useNavigate, useLocation } from "react-router-dom";
-import NetworkPopup from "../pages/components/NetworkPopup";
 import { Menu, X } from "lucide-react"; // hamburger & close icons
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import logo from "../assets/logos/logo.svg";
+import NetworkPopup from "../pages/components/NetworkPopup";
 
 const useScrollNavigation = () => {
   const navigate = useNavigate();
@@ -151,7 +151,7 @@ const Navbar = () => {
 
       {/* Mobile Drawer Menu */}
       <div
-        className={`fixed top-0 right-0 h-full w-[70%] bg-black text-white z-50 transform transition-transform duration-300 ${
+        className={`fixed top-0 right-0 h-full w-[70%]  bg-transparent text-white z-50 transform transition-transform duration-300 ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
