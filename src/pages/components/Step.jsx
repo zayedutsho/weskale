@@ -55,7 +55,7 @@ const steps = [
 ];
 
 const Step = () => {
-  const [activeStep, setActiveStep] = useState(2);
+  const [activeStep, setActiveStep] = useState(1);
   return (
     <div className="my-[40px] lg:my-0 flex items-center justify-center mx-auto">
       <section className="text-white lg:py-[80px] 3xl:py-[150px] px-6 flex flex-col items-start">
