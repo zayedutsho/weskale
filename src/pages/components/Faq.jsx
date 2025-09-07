@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { useState } from "react";
 import arrow from "../../assets/images/faq/arrow.svg";
 import cross from "../../assets/images/faq/cross.svg";
 
@@ -49,22 +50,41 @@ const Faq = () => {
     <div className="bg-[#1A1921] flex items-center justify-center mx-auto lg:py-[80px] 3xl:py-[120px]">
       <div className="lg:flex mx-auto gap-[100px]">
         <div className=" lg:mb-12 p-4 lg:p-0">
-          <h2 className="text-4xl md:text-5xl text-white mb-6 font-medium font-grotesk">
+          <motion.h2
+            className="text-4xl md:text-5xl text-white mb-6 font-medium font-grotesk"
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
             Any{" "}
             <span className="font-playfair text-[#1F48FF] italic font-medium">
               Questions?
             </span>
-          </h2>
-          <p className="hidden lg:block text-[#ACA7C8] text-lg leading-[30px] font-roboto">
+          </motion.h2>
+          <motion.p
+            className="hidden lg:block text-[#ACA7C8] text-lg leading-[30px] font-roboto"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 2.5, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
             We believe clarity builds trust. Here are the answers to the <br />
             questions we get most often and if you need more, our team <br /> is
             always here to help.
-          </p>
-          <p className="text-[#ACA7C8] text-[16px] leading-[25px] font-roboto lg:hidden">
+          </motion.p>
+
+          <motion.p
+            className="text-[#ACA7C8] text-[16px] leading-[25px] font-roboto lg:hidden"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 2.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
             We believe clarity builds trust. Here are the answers to the
             questions we get most often and if you need more, our team is always
             here to help.
-          </p>
+          </motion.p>
         </div>
 
         <div className="p-4 lg:p-0">

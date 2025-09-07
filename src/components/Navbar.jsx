@@ -196,7 +196,6 @@ const Navbar = () => {
           onClick={() => setMenuOpen(false)}
         />
       )}
-
       {showNetwork && <NetworkPopup onClose={() => setShowNetwork(false)} />}
     </nav>
   );

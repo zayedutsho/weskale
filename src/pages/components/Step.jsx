@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useState } from "react";
 
 const steps = [
@@ -59,12 +60,18 @@ const Step = () => {
     <div className="my-[40px] lg:my-0 flex items-center justify-center mx-auto">
       <section className="text-white lg:py-[80px] 3xl:py-[150px] px-6 flex flex-col items-start">
         {/* Title */}
-        <h2 className="font-medium mb-4 lg:mb-12 text-left text-[32px] lg:text-[50px] 3xl:text-[56px]">
+        <motion.h2
+          className="font-medium mb-4 lg:mb-12 text-left text-[32px] lg:text-[50px] 3xl:text-[56px]"
+          initial={{ opacity: 0, x: -60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 2.5, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
           Our 4-Step{" "}
           <span className="text-blue-500 italic font-playfair text-[34px] lg:text-[52px] 3xl:text-[60px]">
             Process
           </span>
-        </h2>
+        </motion.h2>
 
         {/* Steps Container */}
         <div className="flex flex-col lg:flex-row gap-6">
@@ -72,6 +79,7 @@ const Step = () => {
             <div
               key={step.id}
               onClick={() => setActiveStep(step.id)}
+              onMouseEnter={() => setActiveStep(step.id)}
               className={`cursor-pointer transition-all duration-300 
         ${
           activeStep === step.id

@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import Meeting from "./components/Meeting";
 import SolutionCard from "./components/SolutionCard";
 
@@ -97,31 +98,71 @@ const Solution = () => {
       buttonText: "Get Started",
     },
   ];
+  const headingVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1.2, ease: "easeOut" },
+    },
+  };
+  const containerVariants = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.2, // delay between each card
+      },
+    },
+  };
+
+  // individual card pop-up animation
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  };
 
   return (
     <div>
       <section className="py-10 lg:py-12 px-4 lg:px-6">
-        <h1 className="hidden lg:block mt-[60px] lg:mt-[80px] 3xl:mt-[120px] lg:mb-[60px] 3xl:mb-[90px] text-center text-[32px] lg:text-[50px] 3xl:text-[56px] text-white font-grotesk">
+        <motion.h1
+          className="hidden lg:block mt-[60px] lg:mt-[80px] 3xl:mt-[120px] lg:mb-[60px] 3xl:mb-[90px] text-center text-[32px] lg:text-[50px] 3xl:text-[56px] text-white font-grotesk"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={headingVariants}
+        >
           Launch, Manage &&nbsp;
           <span className="font-playfair italic text-[#1F48FF] text-[34px] lg:text-[52px] 3xl:text-[60px]">
             Grow Your <br />
             Business&nbsp;
           </span>
-           Online
-        </h1>
-        <h1 className="leading-[45px] lg:hidden mt-[60px] lg:mt-[80px] 3xl:mt-[120px] lg:mb-[60px] 3xl:mb-[90px] text-center text-[32px] lg:text-[50px] 3xl:text-[56px] text-white font-grotesk">
+          &nbsp;Online
+        </motion.h1>
+
+        <motion.h1
+          className="leading-[45px] lg:hidden mt-[60px] lg:mt-[80px] 3xl:mt-[120px] lg:mb-[60px] 3xl:mb-[90px] text-center text-[32px] lg:text-[50px] 3xl:text-[56px] text-white font-grotesk"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={headingVariants}
+        >
           Launch, Manage &&nbsp;
           <span className="font-playfair italic text-[#1F48FF] text-[34px] lg:text-[52px] 3xl:text-[60px]">
-            Grow Your 
-            Business&nbsp;
+            Grow Your Business&nbsp;
           </span>
-           Online
-        </h1>
-        <div className="mt-[40px] lg:mt-0 grid grid-cols-1 md:grid-cols-3 gap-6 lg:max-w-[1100px] 3xl:max-w-[1300px] mx-auto">
+          &nbsp;Online
+        </motion.h1>
+        <motion.div
+          className="mt-[40px] lg:mt-0 grid grid-cols-1 md:grid-cols-3 gap-6 lg:max-w-[1100px] 3xl:max-w-[1300px] mx-auto"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        >
           {solutions.map((solution, idx) => (
             <SolutionCard key={idx} {...solution} />
           ))}
-        </div>
+        </motion.div>
       </section>
       <Meeting />
     </div>

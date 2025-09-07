@@ -1,11 +1,11 @@
-import logo from "../assets/logos/logo.svg";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import bg from "../assets/images/footer/background.svg";
 import discord from "../assets/images/footer/discord.svg";
-import x from "../assets/images/footer/x.svg";
-import insta from "../assets/images/footer/insta.svg";
 import fb from "../assets/images/footer/fb.svg";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import insta from "../assets/images/footer/insta.svg";
+import x from "../assets/images/footer/x.svg";
+import logo from "../assets/logos/logo.svg";
 import PopupFooter from "../pages/components/PopupFooter";
 
 const Footer = () => {
@@ -24,7 +24,10 @@ const Footer = () => {
             Driving brands forward with creativity, influence and
             digital expertise.
           </h1>
-          <h1 className="cursor-pointer font-grotesk text-[14px] text-[#1F48FF] my-[24px] lg:my-[64px]" onClick={() => setShowNetwork(true)}>
+          <h1
+            className="cursor-pointer font-grotesk text-[14px] text-[#1F48FF] my-[24px] lg:my-[64px]"
+            onClick={() => setShowNetwork(true)}
+          >
             JOIN OUR CREATOR NETWORK
           </h1>
         </div>
@@ -63,7 +66,7 @@ const Footer = () => {
           </h1>
           <div className="font-roboto flex flex-col gap-3 lg:gap-[20px] text-[#ACA7C8]">
             <h1>contact@weskaleagency.com</h1>
-            <h1>What’sApp: 01234 567 890 </h1>
+            <h1>What’sApp:+971581739962 </h1>
             <div className="flex items-center justify-center gap-[16px] mt-6 lg:mt-0">
               <img
                 src={discord}

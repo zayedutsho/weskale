@@ -2,17 +2,17 @@ import star from "../../assets/network/star.svg";
 import sms from "../../assets/network/sms.svg";
 import messages from "../../assets/network/messages.svg";
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 function PopupFooter({ onClose }) {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
-    project: "",
-    budget: "$8 - $15k",
+    instagram: "",
+    whatsapp: "",
+    niche: "",
   });
   const [agreedToPrivacy, setAgreedToPrivacy] = useState(false);
-
-  const budgetOptions = ["$4 - $8k", "$8 - $15k", "$15 - $20k", "$20k +"];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -22,16 +22,42 @@ function PopupFooter({ onClose }) {
     }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
     if (!agreedToPrivacy) {
       alert("Please agree to the privacy policy");
       return;
     }
-    console.log("Form submitted:", formData);
-    // Handle form submission here
+
+    emailjs
+      .send(
+        "service_5z5zx6r", // your EmailJS service ID
+        "template_ul4mlki", // your template ID
+        formData, // sends the entire formData
+        "iAIBMG4ygEZy_MOG5" // your public key
+      )
+      .then(
+        () => {
+          alert("✅ Thank you! Your message has been sent.");
+          setFormData({
+            fullName: "",
+            email: "",
+            instagram: "",
+            whatsapp: "",
+            niche: "",
+          });
+          setAgreedToPrivacy(false);
+        },
+        (error) => {
+          console.error(error);
+          alert("❌ Oops! Something went wrong.");
+        }
+      );
   };
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-lg"></div>
       <div className="mt-[10px] py-[40px] lg:py-0 px-4 lg:px-0 mx-auto lg:w-[1200px] lg:rounded-[48px] 3xl:rounded-none 3xl:w-[1600px] lg:h-[550px] 3xl:h-[806px] bg-network-bg bg-cover bg-center lg:flex items-center justify-center lg:gap-[60px] 3xl:gap-[90px] relative z-10">
         <div className="3xl:ml-[60px]">
           <div className="flex items-start gap-2">
@@ -92,7 +118,7 @@ function PopupFooter({ onClose }) {
         <div className="flex items-start lg:gap-[100px] 3xl:gap-[140px] 3xl:mt-[66px]">
           <div>
             <div className="bg-white rounded-[12px] lg:rounded-[24px] lg:w-[500px] 3xl:w-[668px] lg:h-[500px] 3xl:h-[685px] lg:p-6 p-4 3xl:p-[48px] mt-[25px] lg:mt-[80px] 3xl:mt-[48px] lg:mb-[80px] 3xl:mb-[120px]">
-              <div className="">
+              <form className="" onSubmit={handleSubmit}>
                 {/* Full Name */}
                 <div>
                   <h1 className="3xl:mb-2 text-[#262626] font-roboto font-normal">
@@ -114,9 +140,9 @@ function PopupFooter({ onClose }) {
                   </h1>
                   <input
                     type="text"
-                    name="fullName"
+                    name="email"
                     placeholder="For official communication"
-                    value={formData.fullName}
+                    value={formData.email}
                     onChange={handleInputChange}
                     className="w-full bg-transparent border-b border-[#E9E9E9] text-[#ACA7C8] 3xl:pb-4 font-roboto placeholder-[#B7B8BE] lg:py-1 3xl:py-3 px-0 focus:outline-none focus:border-blue-400 transition-colors"
                     required
@@ -128,9 +154,9 @@ function PopupFooter({ onClose }) {
                   </h1>
                   <input
                     type="text"
-                    name="fullName"
+                    name="instagram"
                     placeholder="Link to your main profile"
-                    value={formData.fullName}
+                    value={formData.instagram}
                     onChange={handleInputChange}
                     className="w-full bg-transparent border-b border-[#E9E9E9] text-[#ACA7C8] 3xl:pb-4 font-roboto placeholder-[#B7B8BE] lg:py-1 3xl:py-3 px-0 focus:outline-none focus:border-blue-400 transition-colors"
                     required
@@ -141,10 +167,10 @@ function PopupFooter({ onClose }) {
                     WhatsApp Number*
                   </h1>
                   <input
-                    type="text"
-                    name="fullName"
+                    type="number"
+                    name="whatsapp"
                     placeholder="For quick and direct contact"
-                    value={formData.fullName}
+                    value={formData.whatsapp}
                     onChange={handleInputChange}
                     className="w-full bg-transparent border-b border-[#E9E9E9] text-[#ACA7C8] 3xl:pb-4 font-roboto placeholder-[#B7B8BE] lg:py-1 3xl:py-3 px-0 focus:outline-none focus:border-blue-400 transition-colors"
                     required
@@ -156,9 +182,9 @@ function PopupFooter({ onClose }) {
                   </h1>
                   <input
                     type="text"
-                    name="fullName"
+                    name="niche"
                     placeholder="Fashion, Lifestyle, Fitness, Beauty, Tech, Business, Travel, Other"
-                    value={formData.fullName}
+                    value={formData.niche}
                     onChange={handleInputChange}
                     className="w-full bg-transparent border-b border-[#E9E9E9] text-[#ACA7C8] 3xl:pb-4 font-roboto placeholder-[#B7B8BE] lg:py-1 3xl:py-3 px-0 focus:outline-none focus:border-blue-400 transition-colors"
                     required
@@ -167,10 +193,18 @@ function PopupFooter({ onClose }) {
 
                 {/* Submit Button */}
                 <div className="hidden 3xl:flex items-center justify-between mt-2">
-                  <h1 className="text-[#B7B8BE] font-roboto">
-                    By completing the form, you agree to our Terms, <br />{" "}
-                    and Privacy Policy.
-                  </h1>
+                  <label className="flex items-start text-[#B7B8BE] font-roboto cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={agreedToPrivacy}
+                      onChange={(e) => setAgreedToPrivacy(e.target.checked)}
+                      className="appearance-none w-5 h-5 border-2 border-gray-300 rounded-md checked:bg-gradient-to-b checked:from-[#846EFF] checked:to-[#1F48FF] checked:border-transparent flex items-center justify-center transition-all duration-200"
+                    />
+                    <span className="ml-2 mt-[-4px]">
+                      By completing the form, you agree to our Terms, <br />{" "}
+                      and Privacy Policy.
+                    </span>
+                  </label>
                   <button
                     type="button"
                     onClick={handleSubmit}
@@ -180,10 +214,18 @@ function PopupFooter({ onClose }) {
                   </button>
                 </div>
                 <div className="3xl:hidden hidden lg:flex items-center justify-between mt-2">
-                  <h1 className="text-[#B7B8BE] font-roboto">
-                    By completing the form, you <br /> agree to our Terms,{" "}
-                    and Privacy Policy.
-                  </h1>
+                  <label className="flex items-start text-[#B7B8BE] font-roboto cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={agreedToPrivacy}
+                      onChange={(e) => setAgreedToPrivacy(e.target.checked)}
+                      className="appearance-none w-5 h-5 border-2 border-gray-300 rounded-md checked:bg-gradient-to-b checked:from-[#846EFF] checked:to-[#1F48FF] checked:border-transparent flex items-center justify-center transition-all duration-200"
+                    />
+                    <span className="ml-2 mt-[-4px]">
+                      By completing the form, you <br /> agree to our Terms,{" "}
+                      and Privacy Policy.
+                    </span>
+                  </label>
                   <button
                     type="button"
                     onClick={handleSubmit}
@@ -193,10 +235,18 @@ function PopupFooter({ onClose }) {
                   </button>
                 </div>
                 <div className="lg:hidden items-center justify-between mt-2">
-                  <h1 className="text-[#B7B8BE] font-roboto">
-                    By completing the form, you agree to our Terms, and Privacy
-                    Policy.
-                  </h1>
+                  <label className="flex items-start text-[#B7B8BE] font-roboto cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={agreedToPrivacy}
+                      onChange={(e) => setAgreedToPrivacy(e.target.checked)}
+                      className="appearance-none w-7 h-5 border-2 border-gray-300 rounded-md checked:bg-gradient-to-b checked:from-[#846EFF] checked:to-[#1F48FF] checked:border-transparent flex items-center justify-center transition-all duration-200"
+                    />
+                    <span className="ml-2 mt-[-4px]">
+                      By completing the form, you agree to our Terms,
+                      and Privacy Policy.
+                    </span>
+                  </label>
                   <button
                     type="button"
                     onClick={handleSubmit}
@@ -205,7 +255,7 @@ function PopupFooter({ onClose }) {
                     SEND MESSAGE
                   </button>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>

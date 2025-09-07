@@ -1,3 +1,5 @@
+import emailjs from "@emailjs/browser";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import Meeting from "./components/Meeting";
 
@@ -20,31 +22,80 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
     if (!agreedToPrivacy) {
       alert("Please agree to the privacy policy");
       return;
     }
-    console.log("Form submitted:", formData);
-    // Handle form submission here
+
+    // Send email via EmailJS
+    emailjs
+      .send(
+        "service_5z5zx6r", // from EmailJS
+        "template_m99jthx", // from EmailJS
+        formData, // matches template variables
+        "iAIBMG4ygEZy_MOG5" // from EmailJS
+      )
+      .then(
+        () => {
+          alert("✅ Thank you! Your message has been sent.");
+          setFormData({
+            fullName: "",
+            email: "",
+            project: "",
+            budget: "$8 - $15k",
+          });
+          setAgreedToPrivacy(false);
+        },
+        (error) => {
+          console.error(error);
+          alert("❌ Oops! Something went wrong.");
+        }
+      );
+  };
+  const textVariants = {
+    hidden: { opacity: 0, y: 30 }, // start slightly down and invisible
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1.5, ease: "easeOut" }, // slow and smooth
+    },
   };
   return (
     <div>
       <div className="lg:max-w-[1050px] 3xl:max-w-[1250px] mx-auto mt-[100px] lg:mt-[150px] 3xl:mt-[200px] flex flex-col items-start relative z-10">
         <div className="px-4 lg:px-0">
-          <h1 className="text-[32px] lg:text-[50px] 3xl:text-[56px] text-white font-grotesk">
+          <motion.h1
+            className="text-[32px] lg:text-[50px] 3xl:text-[56px] text-white font-grotesk"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={textVariants}
+          >
             Contact{" "}
             <span className="font-playfair italic text-[#5B4BFF] text-[34px] lg:text-[52px] 3xl:text-[60px]">
               Skale
             </span>
-          </h1>
-          <h1 className="text-[#ACA7C8] text-lg leading-[30px] font-roboto">
+          </motion.h1>
+
+          <motion.h1
+            className="text-[#ACA7C8] text-lg leading-[30px] font-roboto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={textVariants}
+          >
             Let’s see what we can do to make your project really stand out.
-          </h1>
+          </motion.h1>
         </div>
         <div className="px-4 lg:px-0 flex flex-col-reverse lg:flex-row items-start lg:gap-[100px] 3xl:gap-[140px]">
           <div>
-            <div className="bg-[#201D31] rounded-[24px] lg:w-[600px] 3xl:w-[668px] 3xl:h-[685px] p-[24px] lg:p-[48px] mt-[48px] lg:mb-[80px] 3xl:mb-[120px]">
+            <form
+              onSubmit={handleSubmit}
+              className="bg-[#201D31] rounded-[24px] lg:w-[600px] 3xl:w-[668px] 3xl:h-[685px] p-[24px] lg:p-[48px] mt-[48px] lg:mb-[80px] 3xl:mb-[120px]"
+            >
               <div className="">
                 {/* Full Name */}
                 <div>
@@ -160,20 +211,53 @@ const Contact = () => {
                   Contact Us
                 </button>
               </div>
-            </div>
+            </form>
           </div>
           <div className="mt-8 lg:mt-12">
-            <h1 className="font-grotesk text-[18px] text-white">HEAD OFFICE</h1>
-            <h1 className="text-[#ACA7C8] font-roboto text-lg mt-4">
+            {/* HEAD OFFICE label - fade from left */}
+            <motion.h1
+              className="font-grotesk text-[18px] text-white"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+            >
+              HEAD OFFICE
+            </motion.h1>
+
+            {/* Address - fade from right */}
+            <motion.h1
+              className="text-[#ACA7C8] font-roboto text-lg mt-4"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+            >
               71-75 Shelton Street <br /> Covent Garden, London, <br />
               United Kingdom
-            </h1>
-            <h1 className="font-grotesk text-[18px] text-white mt-8 lg:mt-12">
+            </motion.h1>
+
+            {/* E-MAIL label - fade from top */}
+            <motion.h1
+              className="font-grotesk text-[18px] text-white mt-8 lg:mt-12"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+            >
               E-MAIL
-            </h1>
-            <h1 className="text-[#ACA7C8] font-roboto text-lg lg:mt-4">
+            </motion.h1>
+
+            {/* Email - fade from bottom */}
+            <motion.h1
+              className="text-[#ACA7C8] font-roboto text-lg lg:mt-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+            >
               contact@weskaleagency.com
-            </h1>
+            </motion.h1>
           </div>
         </div>
       </div>

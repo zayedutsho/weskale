@@ -1,4 +1,4 @@
-import React from "react";
+import { motion } from "framer-motion";
 import { InlineWidget } from "react-calendly";
 
 function Meeting() {
@@ -13,13 +13,36 @@ function Meeting() {
       hide_gdpr_banner: "1", // Hide GDPR banner
     }).toString();
 
+  const headingVariants = {
+    hidden: { opacity: 0, y: 30 }, // start slightly down and invisible
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1.2, ease: "easeOut" }, // slow and smooth
+    },
+  };
   return (
     <div className="mt-10 lg:mt-[60px] 3xl:mt-[100px] 3xl:mb-[60px] relative">
       <div className="text-white text-center font-grotesk">
-        <h1 className="text-[18px] font-medium uppercase">
+        <motion.h1
+          className="text-[18px] font-medium uppercase"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={headingVariants}
+        >
           If you're ready to get down to business
-        </h1>
-        <h1 className="mb-6 lg:mb-0 text-[32px] lg:text-[60px] font-medium mt-2 capitalize">Book a meeting</h1>
+        </motion.h1>
+
+        <motion.h1
+          className="mb-6 lg:mb-0 text-[32px] lg:text-[60px] font-medium mt-2 capitalize"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={headingVariants}
+        >
+          Book a meeting
+        </motion.h1>
       </div>
       {/* Custom background wrapper */}
       <div className="shadow-2xl">

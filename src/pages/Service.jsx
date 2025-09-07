@@ -1,16 +1,18 @@
-import { useState } from "react";
-import pentool from "../assets/service/pentool.svg";
-import cpu from "../assets/service/cpu.svg";
-import people from "../assets/service/people.svg";
-import tick from "../assets/service/tick.svg";
+import { motion, useAnimation } from "framer-motion";
+import { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
+import { Link } from "react-router-dom";
 import check from "../assets/service/check.svg";
 import circle from "../assets/service/circle.svg";
+import cpu from "../assets/service/cpu.svg";
 import laptop1 from "../assets/service/laptop1.svg";
 import laptop2 from "../assets/service/laptop2.svg";
 import laptop3 from "../assets/service/laptop3.svg";
-import Partner from "./components/Partner";
+import pentool from "../assets/service/pentool.svg";
+import people from "../assets/service/people.svg";
+import tick from "../assets/service/tick.svg";
 import Meeting from "./components/Meeting";
-import { Link } from "react-router-dom";
+import Partner from "./components/Partner";
 
 const services = [
   {
@@ -93,30 +95,78 @@ const Service = () => {
   const toggle = (id) => {
     setActive(active === id ? null : id);
   };
+  const headingVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 2.8, ease: "easeOut" },
+    },
+  };
+  const controls = useAnimation();
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
 
+  useEffect(() => {
+    if (inView) {
+      controls.start({ opacity: 1, scale: 1 }); // pop-up animation
+    }
+  }, [controls, inView]);
   return (
     <div>
       <div className="px-4 lg:px-0 lg:max-w-[1050px] 3xl:max-w-[1250px] mx-auto mt-[80px] lg:mt-[150px] 3xl:mt-[200px] flex flex-col items-start">
         {/* Heading */}
         <div>
-          <h1 className="text-[34px] lg:text-[50px] 3xl:text-[56px] text-white font-grotesk">
+          <motion.h1
+            className="text-[34px] lg:text-[50px] 3xl:text-[56px] text-white font-grotesk"
+            initial={{ opacity: 0, y: -50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 1,
+              ease: "easeOut",
+            }}
+            viewport={{ once: true }}
+          >
             Services We{" "}
             <span className="font-playfair italic text-[#1F48FF] text-[36px] lg:text-[52px] 3xl:text-[60px]">
               Offer
             </span>
-          </h1>
-          <p className="text-[#ACA7C8] text-lg leading-[30px] font-roboto hidden lg:block">
+          </motion.h1>
+
+          {/* P (desktop) fade-in down */}
+          <motion.p
+            className="text-[#ACA7C8] text-lg leading-[30px] font-roboto hidden lg:block"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 1.2,
+              ease: "easeOut",
+              delay: 0.2,
+            }}
+            viewport={{ once: true }}
+          >
             At Weskale, we connect creativity, performance and influence to{" "}
             <br />
             craft solutions that make brands stand out. Because true growth{" "}
             <br />
             happens when we grow as one
-          </p>
-          <p className="text-[#ACA7C8] lg:text-lg leading-[28px] font-roboto lg:hidden mt-1 lg:mt-0">
+          </motion.p>
+
+          {/* P (mobile) fade-in down */}
+          <motion.p
+            className="text-[#ACA7C8] lg:text-lg leading-[28px] font-roboto lg:hidden mt-1 lg:mt-0"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 1.2,
+              ease: "easeOut",
+              delay: 0.3,
+            }}
+            viewport={{ once: true }}
+          >
             At Weskale, we connect creativity, performance and influence to
             craft solutions that make brands stand out. Because true growth
             happens when we grow as one
-          </p>
+          </motion.p>
         </div>
 
         {/* Services List + Details */}
@@ -191,18 +241,31 @@ const Service = () => {
       <div className="flex flex-col lg:flex-row items-center justify-center gap-[50px] lg:gap-[200px] 3xl:gap-[300px] my-[40px] lg:my-[100px] 3xl:my-[150px]">
         <div className="">
           {/* Title */}
-          <h2 className="hidden lg:block lg:text-[50px] 3xl:text-[56px] text-white font-grotesk leading-[64px]">
+          <motion.h2
+            className="hidden lg:block lg:text-[50px] 3xl:text-[56px] text-white font-grotesk leading-[64px]"
+            variants={headingVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
             Our Tools & <br />
             <span className="font-playfair italic text-[#1F48FF] lg:text-[52px] 3xl:text-[60px]">
               Technology
             </span>
-          </h2>
-          <h2 className="text-[32px] lg:hidden lg:text-[50px] 3xl:text-[56px] text-white font-grotesk leading-[64px]">
-            Our Tools &&nbsp;
+          </motion.h2>
+
+          <motion.h2
+            className="text-[32px] lg:hidden lg:text-[50px] 3xl:text-[56px] text-white font-grotesk leading-[64px]"
+            variants={headingVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            Our Tools &nbsp;
             <span className="font-playfair italic text-[#1F48FF] text-[34px] lg:text-[52px] 3xl:text-[60px]">
               Technology
             </span>
-          </h2>
+          </motion.h2>
 
           {/* Tools List */}
           <div className="mt-4 lg:mt-10 space-y-6">
@@ -239,11 +302,20 @@ const Service = () => {
             <Link to="/contact-us">CONTACT US</Link>
           </button>
         </div>
-        <img
+        <motion.img
           src={circle}
-          alt=""
+          alt="Circle"
           className="w-[300px] lg:w-[452px] 3xl:w-[552px] mb-8 lg:mb-0"
+          initial={{ opacity: 0, scale: 0.8, rotate: 0 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          animate={{ rotate: 360 }}
+          transition={{
+            rotate: { repeat: Infinity, duration: 10, ease: "linear" },
+          }}
         />
+        ){/* <Orbit /> */}
       </div>
 
       {/* Bottom Sections */}
@@ -251,6 +323,10 @@ const Service = () => {
         <Meeting />
         <Partner />
       </div>
+      {/* <div className="flex justify-center items-center text-white w-[500px] h-[500px] ">
+        <OrbitingCircles>🌕</OrbitingCircles>
+        <OrbitingCircles>🌕</OrbitingCircles>
+      </div> */}
     </div>
   );
 };
