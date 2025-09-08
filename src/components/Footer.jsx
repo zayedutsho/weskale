@@ -95,9 +95,17 @@ const Footer = () => {
         <h1 className="mt-4 lg:mt-0">
           © 2025 Weskale Agency. All rights reserved.
         </h1>
-        <div className="flex items-center justify-center gap-6">
+        {/* <div className="flex items-center justify-center gap-6">
           <h1>Terms of Service</h1>
           <h1>Privacy Policy</h1>
+        </div> */}
+        <div className="flex items-center justify-center gap-6">
+          <Link to="/terms" className="text-white hover:underline">
+            Terms of Service
+          </Link>
+          <Link to="/privacy" className="text-white hover:underline">
+            Privacy Policy
+          </Link>
         </div>
       </div>
 
