@@ -1,6 +1,6 @@
 const Terms = () => {
   return (
-    <div className="bg-black min-h-screen px-6 py-12 font-roboto text-white">
+    <div className="bg-black min-h-screen px-6 py-12 font-roboto text-white relative mt-[100px]">
       <div className="max-w-4xl mx-auto space-y-6">
         <h1 className="text-3xl font-bold">Terms & Conditions</h1>
         <p>Effective Date: 29 August 2025</p>
