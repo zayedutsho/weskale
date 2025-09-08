@@ -33,7 +33,7 @@ const Hero = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="hidden lg:block font-grotesk font-medium text-white text-left lg:leading-[55px] 3xl:leading-[75px]"
+            className="hidden  relative   lg:block font-grotesk font-medium text-white text-left lg:leading-[55px] 3xl:leading-[75px]"
           >
             <motion.span variants={revealItem} className="inline-block">
               Weskale Is Where
@@ -78,7 +78,7 @@ const Hero = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="hidden lg:flex font-roboto text-[#ACA7C8] text-[14px] 3xl:text-[18px] mt-4 lg:mt-[30px]"
+            className="hidden lg:flex  font-roboto text-[#ACA7C8] text-[14px] 3xl:text-[18px] mt-4 lg:mt-[30px]"
           >
             <h1>
               Weskale BrandLab <span className="mx-[16px]">·</span>
@@ -95,7 +95,7 @@ const Hero = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-2 gap-2 lg:hidden font-roboto text-[#ACA7C8] text-[16px] 3xl:text-[18px] mt-8 lg:mt-[30px]"
+            className="grid grid-cols-1 gap-2 lg:hidden font-roboto text-[#ACA7C8] text-[16px] 3xl:text-[18px] mt-8 lg:mt-[30px]"
           >
             <h1>
               <span className="mx-[16px]">·</span> Weskale BrandLab

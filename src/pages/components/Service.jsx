@@ -39,7 +39,7 @@ const Service = () => {
           Explore our services to boost your online presence and drive growth,
           from web <br /> design, development to SEO and digital marketing.
         </motion.h1>
-
+        {/* 
         <motion.h1
           className="px-4 lg:px-0 mt-4 lg:mt-[25px] text-[14px] lg:text-[18px] text-[#ACA7C8] font-roboto leading-[25px] lg:hidden"
           initial={{ opacity: 0, y: 40 }}
@@ -49,7 +49,7 @@ const Service = () => {
         >
           Explore our services to boost your online presence and drive growth,
           from web design, development to SEO and digital marketing.
-        </motion.h1>
+        </motion.h1> */}
         <div className="px-4 lg:pl-0 flex gap-[24px] mt-[40px] lg:mt-[64px] text-left text-white overflow-x-auto whitespace-nowrap no-scrollbar lg:overflow-hidden">
           <div className="cursor-pointer w-[322px] h-[280px] lg:h-[322px] p-[40px] bg-[#201D31] hover:bg-gradient-to-b from-[#110C5E] to-[#110F1D] rounded-[24px]">
             <img src={s1} alt="" />

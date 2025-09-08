@@ -125,7 +125,7 @@ const Solution = () => {
     <div>
       <section className="py-10 lg:py-12 px-4 lg:px-6">
         <motion.h1
-          className="hidden lg:block mt-[60px] lg:mt-[80px] 3xl:mt-[120px] lg:mb-[60px] 3xl:mb-[90px] text-center text-[32px] lg:text-[50px] 3xl:text-[56px] text-white font-grotesk"
+          className="hidden relative  lg:block mt-[60px] lg:mt-[80px] 3xl:mt-[120px] lg:mb-[60px] 3xl:mb-[90px] text-center text-[32px] lg:text-[50px] 3xl:text-[56px] text-white font-grotesk"
           initial="hidden"
           animate="visible" // 👈 animate immediately
           variants={headingVariants}

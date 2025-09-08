@@ -1,13 +1,10 @@
-import React from "react";
+import Faq from "./components/Faq";
 import Hero from "./components/Hero";
-import heroBackground from "../assets/images/hero/Background.svg";
+import Meeting from "./components/Meeting";
+import Network from "./components/Network";
+import Partner from "./components/Partner";
 import Service from "./components/Service";
 import Step from "./components/Step";
-import Faq from "./components/Faq";
-import Contact from "./components/Contact";
-import Partner from "./components/Partner";
-import Network from "./components/Network";
-import Meeting from "./components/Meeting";
 
 const Home = () => {
   return (
