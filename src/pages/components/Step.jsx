@@ -22,7 +22,7 @@ const steps = [
     content: {
       objective: "Build a tailored strategy based on your unique needs.",
       whatWeDo:
-        "From brand positioning to content planning, we design a strategy adapted to your goals — whether digital marketing, influence, or both.",
+        "From brand positioning to content planning, we design a strategy adapted to your goals  whether digital marketing, influence, or both.",
       whatYouReceive:
         "A structured action plan that aligns with your objectives and sets the stage for impactful execution.",
     },
@@ -35,7 +35,7 @@ const steps = [
       objective:
         "Activate the strategy with creative campaigns built to perform.",
       whatWeDo:
-        "We launch campaigns tailored to each client’s needs — whether that means digital marketing, influence marketing, or a mix of both. We create the right content, activate the right channels, and manage every detail to ensure smooth and effective execution.",
+        "We launch campaigns tailored to each client’s needs  whether that means digital marketing, influence marketing, or a mix of both. We create the right content, activate the right channels, and manage every detail to ensure smooth and effective execution.",
       whatYouReceive:
         "Campaigns that connect with your audience, deliver results, and reflect your brand’s vision.",
     },

@@ -29,7 +29,7 @@ const Faq = () => {
       id: 4,
       question: "Why should I choose Weskale over other agencies?",
       answer:
-        "Because Weskale brings together digital expertise, creative content, and influencer power into one approach. Unlike many agencies, we don’t just focus on visibility — we focus on measurable growth, stronger brand positioning, and lasting trust with your audience. That’s what makes us different.",
+        "Because Weskale brings together digital expertise, creative content, and influencer power into one approach. Unlike many agencies, we don’t just focus on visibility we focus on measurable growth, stronger brand positioning, and lasting trust with your audience. That’s what makes us different.",
     },
     // {
     //   id: 5,
