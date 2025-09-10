@@ -33,10 +33,10 @@ function Network({ onClose }) {
 
     emailjs
       .send(
-        "service_cxujet3", // your EmailJS service ID
-        "template_ul4mlki", // your template ID
+        "service_ldrag58", // your EmailJS service ID
+        "template_tuocvqd", // your template ID
         formData, // sends the entire formData
-        "iAIBMG4ygEZy_MOG5" // your public key
+        "v4jlP3MvLX6vd0mrT" // your public key
       )
       .then(
         () => {
@@ -88,7 +88,7 @@ function Network({ onClose }) {
           </motion.h1>
         </div>
         <h1 className="3xl:text-[32px] 3xl:leading-[42px] font-grotesk font-medium text-white mt-4 capitalize">
-          Are you ready to transform your <br /> online process?
+          hey Are you ready to transform your <br /> online process?
         </h1>
         <h1 className="hidden lg:block font-roboto text-white leading-[30px] font-normal mt-4">
           Not everyone gets in. Our network is built for creators who bring more
@@ -149,24 +149,32 @@ function Network({ onClose }) {
                   placeholder="First & Last Name"
                   value={formData.fullName}
                   onChange={handleInputChange}
-                  className="w-full bg-transparent border-b border-[#E9E9E9] text-[#ACA7C8] lg:pb-4 font-roboto placeholder-[#B7B8BE] py-2 lg:py-3 px-0 focus:outline-none focus:border-blue-400 transition-colors"
                   required
+                  className="w-full bg-transparent border-b border-[#E9E9E9] text-[#ACA7C8] 
+                 lg:pb-4 font-roboto placeholder-[#B7B8BE] py-2 lg:py-3 px-0 
+                 focus:outline-none focus:border-blue-400 transition-colors"
                 />
               </div>
+
+              {/* Email */}
               <div>
                 <h1 className="lg:mb-2 text-[#262626] font-roboto font-normal mt-6">
                   Email Address*
                 </h1>
                 <input
-                  type="text"
+                  type="email" // ✅ proper validation
                   name="email"
                   placeholder="For official communication"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full bg-transparent border-b border-[#E9E9E9] text-[#ACA7C8] lg:pb-4 font-roboto placeholder-[#B7B8BE] py-2 lg:py-3 px-0 focus:outline-none focus:border-blue-400 transition-colors"
                   required
+                  className="w-full bg-transparent border-b border-[#E9E9E9] text-[#ACA7C8] 
+                 lg:pb-4 font-roboto placeholder-[#B7B8BE] py-2 lg:py-3 px-0 
+                 focus:outline-none focus:border-blue-400 transition-colors"
                 />
               </div>
+
+              {/* Instagram */}
               <div>
                 <h1 className="lg:mb-2 text-[#262626] font-roboto font-normal mt-6">
                   Instagram Handle (@username)*
@@ -177,10 +185,14 @@ function Network({ onClose }) {
                   placeholder="Link to your main profile"
                   value={formData.instagram}
                   onChange={handleInputChange}
-                  className="w-full bg-transparent border-b border-[#E9E9E9] text-[#ACA7C8] lg:pb-4 font-roboto placeholder-[#B7B8BE] py-2 lg:py-3 px-0 focus:outline-none focus:border-blue-400 transition-colors"
                   required
+                  className="w-full bg-transparent border-b border-[#E9E9E9] text-[#ACA7C8] 
+                 lg:pb-4 font-roboto placeholder-[#B7B8BE] py-2 lg:py-3 px-0 
+                 focus:outline-none focus:border-blue-400 transition-colors"
                 />
               </div>
+
+              {/* WhatsApp */}
               <div>
                 <h1 className="lg:mb-2 text-[#262626] font-roboto font-normal mt-6">
                   WhatsApp Number*
@@ -191,10 +203,14 @@ function Network({ onClose }) {
                   placeholder="For quick and direct contact"
                   value={formData.whatsapp}
                   onChange={handleInputChange}
-                  className="w-full bg-transparent border-b border-[#E9E9E9] text-[#ACA7C8] lg:pb-4 font-roboto placeholder-[#B7B8BE] py-2 lg:py-3 px-0 focus:outline-none focus:border-blue-400 transition-colors"
                   required
+                  className="w-full bg-transparent border-b border-[#E9E9E9] text-[#ACA7C8] 
+                 lg:pb-4 font-roboto placeholder-[#B7B8BE] py-2 lg:py-3 px-0 
+                 focus:outline-none focus:border-blue-400 transition-colors"
                 />
               </div>
+
+              {/* Niche */}
               <div>
                 <h1 className="lg:mb-2 text-[#262626] font-roboto font-normal mt-6">
                   Your Niche*
@@ -202,75 +218,39 @@ function Network({ onClose }) {
                 <input
                   type="text"
                   name="niche"
-                  placeholder="Fashion, Lifestyle, Fitness, Beauty, Tech, Business, Travel, Other"
+                  placeholder="Fashion, Lifestyle, Fitness, Beauty, Tech, Business, Travel, Other"
                   value={formData.niche}
                   onChange={handleInputChange}
-                  className="w-full bg-transparent border-b border-[#E9E9E9] text-[#ACA7C8] lg:pb-4 font-roboto placeholder-[#B7B8BE] py-2 lg:py-3 px-0 focus:outline-none focus:border-blue-400 transition-colors"
                   required
+                  className="w-full bg-transparent border-b border-[#E9E9E9] text-[#ACA7C8] 
+                 lg:pb-4 font-roboto placeholder-[#B7B8BE] py-2 lg:py-3 px-0 
+                 focus:outline-none focus:border-blue-400 transition-colors"
                 />
               </div>
 
-              {/* Submit Button */}
-              <div className="hidden 3xl:flex items-center justify-between mt-2">
+              {/* Privacy + Submit */}
+              <div className="flex items-start justify-between mt-6">
                 <label className="flex items-start text-[#B7B8BE] font-roboto cursor-pointer">
                   <input
                     type="checkbox"
                     checked={agreedToPrivacy}
                     onChange={(e) => setAgreedToPrivacy(e.target.checked)}
-                    className="appearance-none w-5 h-5 border-2 border-gray-300 rounded-md checked:bg-gradient-to-b checked:from-[#846EFF] checked:to-[#1F48FF] checked:border-transparent flex items-center justify-center transition-all duration-200"
+                    className="appearance-none w-5 h-5 border-2 border-gray-300 rounded-md 
+                   checked:bg-gradient-to-b checked:from-[#846EFF] checked:to-[#1F48FF] 
+                   checked:border-transparent transition-all duration-200"
                   />
                   <span className="ml-2 mt-[-4px]">
-                    By completing the form, you agree to our Terms, <br />{" "}
-                    and Privacy Policy.
+                    By completing the form, you agree to our Terms and Privacy
+                    Policy.
                   </span>
                 </label>
 
                 <button
-                  type="button"
-                  onClick={handleSubmit}
-                  className="3xl:w-[160px] bg-gradient-to-b from-[#846EFF] to-[#1F48FF] text-white text-[14px] font-medium lg:h-[42px] 3xl:h-[54px] px-2 rounded-[10px] mt-[24px] transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-[1.02] uppercase tracking-wide"
-                >
-                  SEND MESSAGE
-                </button>
-              </div>
-              <div className="3xl:hidden hidden lg:flex items-center justify-between mt-2">
-                <label className="flex items-start text-[#B7B8BE] font-roboto cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={agreedToPrivacy}
-                    onChange={(e) => setAgreedToPrivacy(e.target.checked)}
-                    className="appearance-none w-5 h-5 border-2 border-gray-300 rounded-md checked:bg-gradient-to-b checked:from-[#846EFF] checked:to-[#1F48FF] checked:border-transparent flex items-center justify-center transition-all duration-200"
-                  />
-                  <span className="ml-2 mt-[-4px]">
-                    By completing the form, you <br /> agree to our Terms,
-                    and Privacy Policy.
-                  </span>
-                </label>
-                <button
-                  type="button"
-                  onClick={handleSubmit}
-                  className="3xl:w-[200px] bg-gradient-to-b from-[#846EFF] to-[#1F48FF] text-white text-[14px] font-medium lg:h-[42px] 3xl:h-[54px] px-2 rounded-[10px] mt-[24px] transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-[1.02] uppercase tracking-wide"
-                >
-                  SEND MESSAGE
-                </button>
-              </div>
-              <div className="lg:hidden items-center justify-between mt-2">
-                <label className="flex items-start text-[#B7B8BE] font-roboto cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={agreedToPrivacy}
-                    onChange={(e) => setAgreedToPrivacy(e.target.checked)}
-                    className="appearance-none w-7 h-5 border-2 border-gray-300 rounded-md checked:bg-gradient-to-b checked:from-[#846EFF] checked:to-[#1F48FF] checked:border-transparent flex items-center justify-center transition-all duration-200"
-                  />
-                  <span className="ml-2 mt-[-4px]">
-                    By completing the form, you agree to our Terms, and Privacy
-                    Policy.
-                  </span>
-                </label>
-                <button
-                  type="button"
-                  onClick={handleSubmit}
-                  className="3xl:w-[200px] bg-gradient-to-b from-[#846EFF] to-[#1F48FF] text-white text-[14px] font-medium h-[42px] 3xl:h-[54px] px-2 rounded-[10px] mt-[24px] transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-[1.02] uppercase tracking-wide"
+                  type="submit" // ✅ now actually submits form
+                  className="3xl:w-[160px] bg-gradient-to-b from-[#846EFF] to-[#1F48FF] 
+                 text-white text-[14px] font-medium lg:h-[42px] 3xl:h-[54px] px-2 
+                 rounded-[10px] mt-[24px] transition-all duration-200 shadow-lg 
+                 hover:shadow-xl transform hover:scale-[1.02] uppercase tracking-wide"
                 >
                   SEND MESSAGE
                 </button>

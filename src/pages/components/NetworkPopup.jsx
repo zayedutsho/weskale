@@ -1,8 +1,8 @@
-import star from "../../assets/network/star.svg";
-import sms from "../../assets/network/sms.svg";
-import messages from "../../assets/network/messages.svg";
-import { useState } from "react";
 import emailjs from "@emailjs/browser";
+import { useState } from "react";
+import messages from "../../assets/network/messages.svg";
+import sms from "../../assets/network/sms.svg";
+import star from "../../assets/network/star.svg";
 
 function NetworkPopup({ onClose }) {
   const [formData, setFormData] = useState({
@@ -32,10 +32,10 @@ function NetworkPopup({ onClose }) {
 
     emailjs
       .send(
-        "service_5z5zx6r", // your EmailJS service ID
-        "template_ul4mlki", // your template ID
+        "service_ldrag58", // your EmailJS service ID
+        "template_tuocvqd", // your template ID
         formData, // sends the entire formData
-        "iAIBMG4ygEZy_MOG5" // your public key
+        "v4jlP3MvLX6vd0mrT" // your public key
       )
       .then(
         () => {
