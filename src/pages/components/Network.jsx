@@ -33,7 +33,7 @@ function Network({ onClose }) {
 
     emailjs
       .send(
-        "service_5z5zx6r", // your EmailJS service ID
+        "service_cxujet3", // your EmailJS service ID
         "template_ul4mlki", // your template ID
         formData, // sends the entire formData
         "iAIBMG4ygEZy_MOG5" // your public key
